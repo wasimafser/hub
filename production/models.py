@@ -68,7 +68,7 @@ class Project(models.Model):
     """
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    extras = models.JSONField(default=dict)
+    extras = models.JSONField(default=dict, null=True, blank=True)
     type = models.ForeignKey(ProjectType, on_delete=models.PROTECT, null=True)
     state = models.ForeignKey(ProjectState, on_delete=models.SET_NULL, null=True)
     priority = models.ForeignKey(ProjectPriority, on_delete=models.SET_NULL, null=True)
@@ -153,7 +153,6 @@ class Task(models.Model):
     """
     title = models.CharField(max_length=200)
     description = models.TextField()
-    extras = models.JSONField(default=dict)
     project = models.ForeignKey(Project, on_delete=models.PROTECT)
     priority = models.ForeignKey(TaskPriority, on_delete=models.SET_NULL, null=True)
     status = models.ForeignKey(TaskStatus, on_delete=models.SET_NULL, null=True)
@@ -171,7 +170,7 @@ class Task(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     expected_completion_duration = models.DurationField(null=True, blank=True)
     completion_duration = models.DurationField(null=True, blank=True)
-    extras = models.JSONField(default=dict)
+    extras = models.JSONField(default=dict, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title
