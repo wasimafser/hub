@@ -21,3 +21,15 @@ class ProjectListView(generics.ListAPIView):
     filterset_fields = ['type', 'state', 'priority']
     ordering_fields = ['created_at', 'updated_at', 'priority__order', 'state']
     search_fields = ['name', 'extras']
+
+
+class TaskListView(generics.ListAPIView):
+    """
+    API endpoint that allows tasks to be listed with filters and search.
+    """
+    queryset = models.Task.objects.all().order_by('created_at')
+    serializer_class = serializers.TaskListSerializer
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter, DjangoFilterBackend]
+    filterset_fields = ['project', 'status', 'priority']
+    ordering_fields = ['created_at', 'updated_at', 'priority__order', 'status']
+    search_fields = ['name', 'extras']

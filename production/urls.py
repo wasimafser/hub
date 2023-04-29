@@ -10,4 +10,5 @@ from rest_framework import routers
 urlpatterns = [
     # path('', include(router.urls)),
     path('projects/', views.ProjectListView.as_view()),
+    path('tasks/', views.TaskListView.as_view()),
 ]

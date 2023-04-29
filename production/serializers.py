@@ -9,3 +9,11 @@ class ProjectListSerializer(serializers.ModelSerializer):
         model = models.Project
         fields = '__all__'
         depth = 1
+
+
+class TaskListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Task
+        fields = '__all__'
+        depth = 1
