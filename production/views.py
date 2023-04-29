@@ -32,4 +32,4 @@ class TaskListView(generics.ListAPIView):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter, DjangoFilterBackend]
     filterset_fields = ['project', 'status', 'priority']
     ordering_fields = ['created_at', 'updated_at', 'priority__order', 'status']
-    search_fields = ['name', 'extras']
+    search_fields = ['title', 'description', 'extras']
